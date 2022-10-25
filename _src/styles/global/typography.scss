@@ -1,0 +1,135 @@
+// ___ Typography ___
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  //font-family: $futura;
+  //color: $black;
+  //font-weight: 400;
+  //line-height: 1.25;
+}
+
+h1, .h1 {
+  //font-size: 42px;
+
+  @include max-screen(767) {
+  }
+
+  &.lg {
+  }
+
+  &.sm {
+  }
+}
+
+h2, .h2 {
+
+  @include max-screen(767) {
+  }
+}
+
+h3, .h3 {
+
+  @include max-screen(767) {
+  }
+}
+
+h4, .h4 {
+
+  @include max-screen(767) {
+  }
+}
+
+h5, .h5 {
+
+  @include max-screen(767) {
+  }
+}
+
+h6, .h6 {
+
+  @include max-screen(767) {
+  }
+}
+
+p {
+  //font-family: $futura;
+  //color: $black;
+  //font-size: 18px;
+  //font-weight: 400;
+  //line-height: 1.5;
+  //margin: 0;
+
+  @include max-screen(767) {
+  }
+
+  &.lg {
+
+    @include max-screen(767) {
+    }
+  }
+
+  &.sm {
+    @include max-screen(767) {
+    }
+  }
+
+  small, .small {
+
+  }
+}
+
+strong, b .strong {
+  font-weight: bold;
+}
+
+del, s .del {
+  text-decoration-line: line-through;
+}
+
+u, .text-underline {
+  @include underline-text(4px);
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.fw-100 {
+  font-weight: 100;
+}
+
+.fw-200 {
+  font-weight: 200;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.fw-900 {
+  font-weight: 900;
+}

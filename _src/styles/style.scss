@@ -1,0 +1,19 @@
+@use "sass:math";
+//******************** MIXINS ********************
+@import "_mixins/font";
+@import "_mixins/media";
+@import "_mixins/reset";
+@import "_mixins/general";
+
+//******************** GLOBAL ********************
+@import "global/variables";
+@import "global/fonts";
+
+//******************** OTHER ********************
+@import "global/settings";
+@import "global/typography";
+
+//******************** COMPONENT ********************
+
+//******************** BLOCKS ********************
+@import "pages/index";
