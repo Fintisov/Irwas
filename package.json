@@ -1,5 +1,5 @@
 {
-  "name": "start-pack-project",
+  "name": "Irvas",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -48,5 +48,9 @@
     "sass": "^1.54.9",
     "webpack": "^5.74.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.1",
+    "slick-carousel": "^1.8.1"
   }
 }
