@@ -31,6 +31,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 
 /***/ }),
 
+/***/ "./_src/scripts/module/tabs.js":
+/*!*************************************!*\
+  !*** ./_src/scripts/module/tabs.js ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst tabs = (headerSelector, tabsSelector, contentSelector, activeClass) => {\n  const header = document.querySelector(headerSelector);\n  const tabs = document.querySelectorAll(tabsSelector);\n  const contentTabs = document.querySelectorAll(contentSelector);\n  hiddenTabs();\n  showTabs();\n  function showTabs() {\n    let i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;\n    contentTabs[i].classList.remove(\"hidden\");\n    contentTabs[i].classList.add(\"show\");\n    tabs[i].classList.add(activeClass);\n  }\n  function hiddenTabs() {\n    contentTabs.forEach(el => {\n      el.classList.add(\"hidden\");\n      el.classList.remove(\"show\");\n    });\n  }\n  header.addEventListener(\"click\", e => {\n    if (e.target && e.target.closest(tabsSelector)) {\n      tabs.forEach((elem, i) => {\n        elem.classList.remove(activeClass);\n        if (e.target.closest(tabsSelector) === elem) {\n          hiddenTabs();\n          showTabs(i);\n        }\n      });\n    }\n  });\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (tabs);\n\n//# sourceURL=webpack://Irvas/./_src/scripts/module/tabs.js?");
+
+/***/ }),
+
 /***/ "./_src/scripts/script.js":
 /*!********************************!*\
   !*** ./_src/scripts/script.js ***!
@@ -38,7 +49,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/slider */ \"./_src/scripts/module/slider.js\");\n/* harmony import */ var _module_popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./module/popup */ \"./_src/scripts/module/popup.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  (0,_module_popup__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\".popup_engineer_btn\", \".popup_close\", \".popup_engineer\", 60000);\n});\n\n//# sourceURL=webpack://Irvas/./_src/scripts/script.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/slider */ \"./_src/scripts/module/slider.js\");\n/* harmony import */ var _module_popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./module/popup */ \"./_src/scripts/module/popup.js\");\n/* harmony import */ var _module_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./module/tabs */ \"./_src/scripts/module/tabs.js\");\n\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  (0,_module_popup__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\".popup_engineer_btn\", \".popup_close\", \".popup_engineer\");\n  (0,_module_tabs__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\".glazing_slider\", \".glazing_block\", \".glazing_content\", \"active\");\n  (0,_module_tabs__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\".decoration_slider\", \".no_click\", \".decoration_content > div > div\", \"after_click\");\n});\n\n//# sourceURL=webpack://Irvas/./_src/scripts/script.js?");
 
 /***/ }),
 
