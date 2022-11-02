@@ -20,6 +20,17 @@ eval("__webpack_require__.r(__webpack_exports__);\nconst modal = function (trigg
 
 /***/ }),
 
+/***/ "./_src/scripts/module/send-forms.js":
+/*!*******************************************!*\
+  !*** ./_src/scripts/module/send-forms.js ***!
+  \*******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst sendForms = () => {\n  const forms = document.querySelectorAll(\"form\"),\n    inputsPhone = document.querySelectorAll(\"input[name='user_phone']\");\n  const statusForm = {\n    load: \"Отправка....\",\n    success: \"Мы с Вами скоро свяжемся. ;-)\",\n    failure: \"Что-то пошло не так. :-(\"\n  };\n  const postData = async (url, data) => {\n    let response = await fetch(url, {\n      method: \"POST\",\n      body: data\n    });\n    return await response.text();\n  };\n  const clearForms = () => {\n    forms.forEach(elem => {\n      elem.reset();\n    });\n  };\n  inputsPhone.forEach(elem => {\n    elem.addEventListener(\"input\", () => {\n      elem.value = elem.value.replace(/\\D/, \"\");\n    });\n  });\n  forms.forEach(el => {\n    el.addEventListener(\"submit\", async e => {\n      e.preventDefault();\n      const formData = new FormData(el);\n      const createStatusMessage = document.createElement(\"div\");\n      createStatusMessage.classList.add(\"status\");\n      el.appendChild(createStatusMessage);\n      createStatusMessage.textContent = statusForm.load;\n      postData(\"./assets/server.php\", formData).then(res => {\n        console.log(res);\n        createStatusMessage.textContent = statusForm.success;\n      }).catch(e => {\n        createStatusMessage.textContent = statusForm.failure;\n      }).finally(() => {\n        clearForms();\n        setTimeout(() => {\n          createStatusMessage.remove();\n        }, 5000);\n      });\n    });\n  });\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (sendForms);\n\n//# sourceURL=webpack://Irvas/./_src/scripts/module/send-forms.js?");
+
+/***/ }),
+
 /***/ "./_src/scripts/module/slider.js":
 /*!***************************************!*\
   !*** ./_src/scripts/module/slider.js ***!
@@ -49,7 +60,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nconst tabs = (headerSelector,
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/slider */ \"./_src/scripts/module/slider.js\");\n/* harmony import */ var _module_popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./module/popup */ \"./_src/scripts/module/popup.js\");\n/* harmony import */ var _module_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./module/tabs */ \"./_src/scripts/module/tabs.js\");\n\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  (0,_module_popup__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\".popup_engineer_btn\", \".popup_close\", \".popup_engineer\");\n  (0,_module_tabs__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\".glazing_slider\", \".glazing_block\", \".glazing_content\", \"active\");\n  (0,_module_tabs__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\".decoration_slider\", \".no_click\", \".decoration_content > div > div\", \"after_click\");\n});\n\n//# sourceURL=webpack://Irvas/./_src/scripts/script.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/slider */ \"./_src/scripts/module/slider.js\");\n/* harmony import */ var _module_popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./module/popup */ \"./_src/scripts/module/popup.js\");\n/* harmony import */ var _module_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./module/tabs */ \"./_src/scripts/module/tabs.js\");\n/* harmony import */ var _module_send_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./module/send-forms */ \"./_src/scripts/module/send-forms.js\");\n\n\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  (0,_module_popup__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\".popup_engineer_btn\", \".popup_close\", \".popup_engineer\");\n  (0,_module_tabs__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\".glazing_slider\", \".glazing_block\", \".glazing_content\", \"active\");\n  (0,_module_tabs__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\".decoration_slider\", \".no_click\", \".decoration_content > div > div\", \"after_click\");\n  (0,_module_send_forms__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n});\n\n//# sourceURL=webpack://Irvas/./_src/scripts/script.js?");
 
 /***/ }),
 
