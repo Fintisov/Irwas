@@ -11,7 +11,7 @@ function html() {
     return src(path.html.src)
         .pipe(plumber(notify.onError(app.html.plumber)))
         .pipe(fileInclude())
-        .pipe(webpHtml())
+        // .pipe(webpHtml())
         .pipe(dest(path.html.dist))
 }
 
