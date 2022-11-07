@@ -1,7 +1,7 @@
-const sendForms = () => {
-    const forms = document.querySelectorAll("form"),
-        inputsPhone = document.querySelectorAll("input[name='user_phone']");
+import checkNumForInput from "./checkNumForInput";
 
+const sendForms = (state) => {
+    const forms = document.querySelectorAll("form");
 
     const statusForm = {
         load: "Отправка....",
@@ -24,16 +24,34 @@ const sendForms = () => {
         })
     }
 
-    inputsPhone.forEach(elem => {
-        elem.addEventListener("input", () => {
-            elem.value = elem.value.replace(/\D/, "");
-        })
-    })
+    const clearObj = (obj) => {
+        for (let key in obj) {
+            if (typeof key === "object") {
+                clearObj(key);
+            } else {
+                if (key === "form") {
+                    obj[key] = 0;
+                } else if (key === "type") {
+                    obj[key] = "tree";
+                } else {
+                    obj[key] = "";
+                }
+            }
+        }
+    }
+
+    checkNumForInput("input[name='user_phone']");
 
     forms.forEach(el => {
         el.addEventListener("submit", async (e) => {
             e.preventDefault();
+            clearObj(state);
+
             const formData = new FormData(el);
+
+            for (let key in state) {
+                formData.append(key, state[key]);
+            }
 
             const createStatusMessage = document.createElement("div");
             createStatusMessage.classList.add("status");
