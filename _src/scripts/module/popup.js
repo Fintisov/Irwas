@@ -7,8 +7,7 @@ const modal = (trigger,
     const triggerModal = document.querySelectorAll(trigger),
         closeModal = document.querySelector(`${modal} ${close}`),
         windowModal = document.querySelector(modal),
-        body = document.querySelector("body"),
-        allModal = document.querySelectorAll("[data-modal]");
+        body = document.querySelector("body");
 
     function showModal() {
         closeAllModal();
@@ -27,18 +26,12 @@ const modal = (trigger,
         body.style.overflow = "";
     }
 
-    function closeAllModal() {
-        allModal.forEach(elem => {
-            if (elem.classList.contains("show")) {
-                elem.classList.remove("show");
-            }
-        })
-    }
-
     triggerModal.forEach(elem => {
         elem.addEventListener("click", (e) => {
-            if (e.target) e.preventDefault();
-            showModal();
+            if (e.target) {
+                e.preventDefault();
+                showModal();
+            }
         })
     });
 
@@ -57,4 +50,16 @@ const modal = (trigger,
     let showModalByTime = (timerModal) ? setTimeout(showModal, timerModal) : "";
 }
 
+function closeAllModal() {
+    const allModal = document.querySelectorAll("[data-modal]");
+
+    allModal.forEach(elem => {
+        if (elem.classList.contains("show")) {
+            elem.classList.remove("show");
+        }
+    })
+}
+
+
 export default modal;
+export {closeAllModal};

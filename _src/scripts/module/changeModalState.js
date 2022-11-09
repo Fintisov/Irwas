@@ -10,10 +10,6 @@ const changeModalState = (state) => {
     checkNumForInput("#width");
     checkNumForInput("#height");
 
-    function checkFilledInput(input) {
-
-    }
-
     function bindActionToElements(elem, event, prop = null) {
         elem.forEach((item, i) => {
             item.addEventListener(event, () => {
@@ -44,7 +40,6 @@ const changeModalState = (state) => {
     bindActionToElements(balconyHeight, "input", "height");
     bindActionToElements(balconyType, "change", "type");
     bindActionToElements(balconyProfile, "change", "profile");
-
 }
 
 export default changeModalState;

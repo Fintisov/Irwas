@@ -1,4 +1,6 @@
 import checkNumForInput from "./checkNumForInput";
+import {closeAllModal} from "./popup";
+import clearCalcForm from "./clearForms";
 
 const sendForms = (state) => {
     const forms = document.querySelectorAll("form");
@@ -26,8 +28,8 @@ const sendForms = (state) => {
 
     const clearObj = (obj) => {
         for (let key in obj) {
-            if (typeof key === "object") {
-                clearObj(key);
+            if (typeof obj[key] === "object") {
+                clearObj(obj[key]);
             } else {
                 if (key === "form") {
                     obj[key] = 0;
@@ -44,35 +46,39 @@ const sendForms = (state) => {
 
     forms.forEach(el => {
         el.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            clearObj(state);
+                e.preventDefault();
+                const formData = new FormData(el);
 
-            const formData = new FormData(el);
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
 
-            for (let key in state) {
-                formData.append(key, state[key]);
+                const createStatusMessage = document.createElement("div");
+                createStatusMessage.classList.add("status");
+                el.appendChild(createStatusMessage);
+                createStatusMessage.textContent = statusForm.load;
+
+                postData("./assets/server.php", formData)
+                    .then(res => {
+                        console.log(res)
+                        createStatusMessage.textContent = statusForm.success;
+                    })
+                    .catch((e) => {
+                        createStatusMessage.textContent = statusForm.failure;
+                    })
+                    .finally(() => {
+                        clearForms();
+                        clearObj(state);
+                        clearCalcForm();
+                        setTimeout(() => {
+                            closeAllModal();
+                        }, 1000)
+                        setTimeout(() => {
+                            createStatusMessage.remove();
+                        }, 5000)
+                    })
             }
-
-            const createStatusMessage = document.createElement("div");
-            createStatusMessage.classList.add("status");
-            el.appendChild(createStatusMessage);
-            createStatusMessage.textContent = statusForm.load;
-
-            postData("./assets/server.php", formData)
-                .then(res => {
-                    console.log(res)
-                    createStatusMessage.textContent = statusForm.success;
-                })
-                .catch((e) => {
-                    createStatusMessage.textContent = statusForm.failure;
-                })
-                .finally(() => {
-                    clearForms();
-                    setTimeout(() => {
-                        createStatusMessage.remove();
-                    }, 5000)
-                })
-        })
+        )
     })
 }
 
