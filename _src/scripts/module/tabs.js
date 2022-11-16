@@ -14,6 +14,7 @@ const tabs = (headerSelector,
     function showTabs(i = 0) {
         contentTabs[i].classList.remove("hidden");
         contentTabs[i].classList.add(activeClassForContent);
+        contentTabs[i].classList.add("faded");
         tabs[i].classList.add(activeClass);
     }
 
@@ -21,6 +22,7 @@ const tabs = (headerSelector,
         contentTabs.forEach(el => {
             el.classList.add("hidden");
             el.classList.remove(activeClassForContent);
+            el.classList.remove("faded");
         })
     }
 
