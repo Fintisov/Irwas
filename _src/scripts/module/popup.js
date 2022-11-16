@@ -9,7 +9,7 @@ const modal = (trigger,
         windowModal = document.querySelector(modal),
         body = document.querySelector("body");
 
-    function getWidthScrollBar () {
+    function getWidthScrollBar() {
         let div = document.createElement("div"),
             result = null;
         div.style.cssText = `
@@ -43,10 +43,6 @@ const modal = (trigger,
         if (windowModal.classList.contains("show")) {
             windowModal.classList.remove("show");
         }
-        body.style.cssText = `
-            overflow: "";
-            margin-right: ""; 
-        `;
     }
 
 
@@ -75,7 +71,14 @@ const modal = (trigger,
 }
 
 function closeAllModal() {
-    const allModal = document.querySelectorAll("[data-modal]");
+    debugger
+    const allModal = document.querySelectorAll("[data-modal]"),
+        body = document.querySelector("body");
+
+    body.style.cssText = `
+            overflow: "";
+            margin-right: "";  
+        `;
 
     allModal.forEach(elem => {
         if (elem.classList.contains("show")) {
