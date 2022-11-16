@@ -9,6 +9,24 @@ const modal = (trigger,
         windowModal = document.querySelector(modal),
         body = document.querySelector("body");
 
+    function getWidthScrollBar () {
+        let div = document.createElement("div"),
+            result = null;
+        div.style.cssText = `
+          width: 50px;
+          height: 50px;
+          overflow-y: scroll;
+          visibility: hidden;
+        `;
+
+        body.append(div);
+
+        result = div.offsetWidth - div.clientWidth;
+        div.remove();
+
+        return result;
+    }
+
     function showModal() {
         closeAllModal();
         if (!windowModal.classList.contains("show")) {
@@ -16,6 +34,8 @@ const modal = (trigger,
             body.style.overflow = "hidden";
             clearTimeout(showModalByTime);
         }
+
+        body.style.marginRight = `${getWidthScrollBar()}px`;
     }
 
     function hiddenModal() {
@@ -23,8 +43,12 @@ const modal = (trigger,
         if (windowModal.classList.contains("show")) {
             windowModal.classList.remove("show");
         }
-        body.style.overflow = "";
+        body.style.cssText = `
+            overflow: "";
+            margin-right: ""; 
+        `;
     }
+
 
     triggerModal.forEach(elem => {
         elem.addEventListener("click", (e) => {

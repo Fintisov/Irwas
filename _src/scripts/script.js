@@ -4,13 +4,15 @@ import tabs from "./module/tabs";
 import sendForms from "./module/send-forms";
 import changeModalState from "./module/changeModalState";
 import timer from "./module/timer";
+import images from "./module/images";
 
 document.addEventListener("DOMContentLoaded", () => {
     const modalState = {
         form: 0,
         type: 'tree',
     };
-    const deadline = "2022-11-14";
+
+    const deadline = "2024-12-31";
 
     modal(".popup_engineer_btn", ".popup_engineer", ".popup_close");
     modal(".phone_link", ".popup", ".popup_close")
@@ -28,4 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
     changeModalState(modalState);
 
     timer(".container1", deadline);
+
+    images();
 })

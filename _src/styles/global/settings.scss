@@ -101,20 +101,6 @@ a {
   }
 }
 
-.visibility-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
-
-.display-none {
-  display: none !important;
-}
 
 .icon {
   stroke: currentColor;
@@ -303,11 +289,45 @@ textarea:focus {
   background-size: 70%;
 }
 
+
+.visibility-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.display-none {
+  display: none !important;
+}
+
 .show {
-  display: block!important;
+  display: block !important;
 }
 
 .show-inline {
-  display: inline-block!important;
+  display: inline-block !important;
 }
+
+.show-flex {
+  display: flex !important;
+}
+
+.faded {
+  animation: faded 0.5s;
+}
+
+@keyframes faded {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
